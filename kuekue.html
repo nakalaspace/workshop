@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manis & Hangat - Artisan Homemade Bakery</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Inter & Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        warm: {
+                            50: '#fcfbfa',
+                            100: '#f5f0eb',
+                            200: '#ebdcd0',
+                            300: '#d9c0ad',
+                            400: '#c29d82',
+                            500: '#a87e5e',
+                            600: '#8c6447',
+                            700: '#704f36',
+                            800: '#5c412e',
+                            900: '#4a3526',
+                        },
+                        cream: '#FAF6F0',
+                        terracotta: '#D97757'
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FAF6F0;
+            color: #4a3526;
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
+</head>
+<body class="bg-[#FAF6F0] text-warm-900 antialiased selection:bg-warm-200 selection:text-warm-800">
+
+    <header class="sticky top-0 z-50 bg-[#FAF6F0]/90 backdrop-blur-md border-b border-warm-200 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 rounded-full bg-warm-400 text-white flex items-center justify-center font-serif font-bold text-xl shadow-md group-hover:bg-warm-500 transition-colors">
+                    M
+                </div>
+                <div>
+                    <span class="font-serif text-xl font-bold tracking-tight text-warm-900 block">Manis & Hangat</span>
+                    <span class="text-xs text-warm-600 font-medium tracking-widest uppercase">Artisan Homemade</span>
+                </div>
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-warm-800">
+                <a href="#menu" class="hover:text-terracotta transition-colors">Menu & Harga</a>
+                <a href="#story" class="hover:text-terracotta transition-colors">Cerita Kami</a>
+                <a href="#how-to-order" class="hover:text-terracotta transition-colors">Cara Pesan</a>
+                <a href="#contact" class="hover:text-terracotta transition-colors">Kontak</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <button onclick="toggleCartModal()" class="relative p-2.5 rounded-full bg-warm-100 hover:bg-warm-200 text-warm-800 transition-colors" aria-label="Keranjang Belanja">
+                    <i class="fa-solid fa-basket-shopping text-lg"></i>
+                    <span id="cart-badge" class="absolute -top-1 -right-1 bg-terracotta text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold hidden">0</span>
+                </button>
+                <a href="#menu" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-warm-800 hover:bg-warm-700 text-white text-sm font-semibold shadow-sm transition-all hover:shadow">
+                    Pesan Sekarang
+                </a>
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2.5 rounded-full bg-warm-100 text-warm-800">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-warm-50 border-b border-warm-200 p-6 shadow-lg">
+            <div class="flex flex-col gap-4 text-center font-medium">
+                <a href="#menu" onclick="toggleMobileMenu()" class="py-2 hover:text-terracotta">Menu & Harga</a>
+                <a href="#story" onclick="toggleMobileMenu()" class="py-2 hover:text-terracotta">Cerita Kami</a>
+                <a href="#how-to-order" onclick="toggleMobileMenu()" class="py-2 hover:text-terracotta">Cara Pesan</a>
+                <a href="#contact" onclick="toggleMobileMenu()" class="py-2 hover:text-terracotta">Kontak</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative overflow-hidden py-16 lg:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-warm-200/60 text-warm-800 text-xs font-semibold uppercase tracking-wider">
+                    <i class="fa-solid fa-heart text-terracotta"></i> Freshly Baked From Home Kitchen
+                </span>
+                <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-warm-900 leading-[1.15]">
+                    Kehangatan & Rasa Autentik di Setiap Gigitan.
+                </h1>
+                <p class="text-lg text-warm-700 max-w-2xl mx-auto lg:mx-0">
+                    Kami memang belum memiliki toko fisik, namun setiap kue dipanggang spesial berdasarkan pesanan menggunakan bahan-bahan premium pilihan tanpa pengawet buatan.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                    <a href="#menu" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-full bg-terracotta hover:bg-[#c26547] text-white font-semibold shadow-lg shadow-terracotta/20 transition-all hover:-translate-y-0.5">
+                        Lihat Menu & Harga <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#story" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-full bg-warm-100 hover:bg-warm-200 text-warm-800 font-semibold transition-all">
+                        Kenali Kami
+                    </a>
+                </div>
+                <div class="grid grid-cols-3 gap-4 pt-8 border-t border-warm-200 max-w-lg mx-auto lg:mx-0">
+                    <div>
+                        <p class="font-serif text-2xl font-bold text-warm-900">100%</p>
+                        <p class="text-xs text-warm-600">Bahan Premium</p>
+                    </div>
+                    <div>
+                        <p class="font-serif text-2xl font-bold text-warm-900">Fresh</p>
+                        <p class="text-xs text-warm-600">Panggang Setiap Hari</p>
+                    </div>
+                    <div>
+                        <p class="font-serif text-2xl font-bold text-warm-900">Made by</p>
+                        <p class="text-xs text-warm-600">Passion & Love</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-5 relative">
+                <div class="relative mx-auto max-w-md lg:max-w-none">
+                    <div class="absolute -inset-4 bg-warm-300/40 rounded-3xl transform rotate-3 -z-10"></div>
+                    <img src="https://placehold.co/600x700/d9c0ad/4a3526?text=Artisan+Homemade+Bakes" alt="Artisan Homemade Bakes" class="rounded-2xl shadow-xl w-full object-h-cover aspect-[4/5] object-center" onerror="this.src='https://placehold.co/600x700/ebdcd0/5c412e?text=Pastry+Collection'">
+                    <div class="absolute -bottom-6 -left-6 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-warm-200 flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-xl bg-terracotta/10 text-terracotta flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-warm-600 font-medium">Rating Pelanggan</p>
+                            <p class="font-serif font-bold text-warm-900 text-lg">4.9 / 5.0 (Review Asli)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="py-20 bg-warm-100/70 border-y border-warm-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-terracotta">Pilihan Lezat Hari Ini</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-warm-900">Daftar Menu & Harga</h2>
+                <p class="text-warm-700">Pilih menu favorit Anda. Karena dibuat homemade, pemesanan minimal H-1 agar kualitas rasa selalu terjaga sempurna.</p>
+                
+                <!-- Category Filter Buttons -->
+                <div class="flex flex-wrap items-center justify-center gap-2 pt-4">
+                    <button onclick="filterMenu('all')" class="category-btn px-5 py-2 rounded-full text-sm font-semibold bg-warm-800 text-white transition-all shadow-sm">Semua Menu</button>
+                    <button onclick="filterMenu('pastry')" class="category-btn px-5 py-2 rounded-full text-sm font-semibold bg-white text-warm-800 hover:bg-warm-200 transition-all shadow-sm">Pastry & Croissant</button>
+                    <button onclick="filterMenu('cake')" class="category-btn px-5 py-2 rounded-full text-sm font-semibold bg-white text-warm-800 hover:bg-warm-200 transition-all shadow-sm">Artisan Cake</button>
+                    <button onclick="filterMenu('cookies')" class="category-btn px-5 py-2 rounded-full text-sm font-semibold bg-white text-warm-800 hover:bg-warm-200 transition-all shadow-sm">Cookies & Brownies</button>
+                </div>
+            </div>
+
+            <!-- Menu Grid -->
+            <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Javascript will render menu cards here -->
+            </div>
+        </div>
+    </section>
+
+    <section id="story" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-5">
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-warm-200 rounded-3xl transform -rotate-2 -z-10"></div>
+                    <img src="https://placehold.co/600x750/ebdcd0/4a3526?text=Dapur+Homemade+Kami" alt="Kitchen Story" class="rounded-2xl shadow-lg w-full object-cover aspect-[4/5]" onerror="this.src='https://placehold.co/600x750/d9c0ad/4a3526?text=Our+Kitchen'">
+                </div>
+            </div>
+            
+            <div class="lg:col-span-7 space-y-6">
+                <span class="text-xs font-bold uppercase tracking-widest text-terracotta">Cerita Kami</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-warm-900 leading-tight">
+                    Bermula dari Dapur Rumah Sederhana Menjadi Kecintaan Keluarga Anda.
+                </h2>
+                <p class="text-warm-700 leading-relaxed">
+                    <b>Manis & Hangat</b> lahir pada tahun 2023 di tengah kehangatan dapur rumah kecil kami. Berawal dari hobi membuat kue untuk acara keluarga dan teman terdekat, aroma mentega segar dan panggangan kue manis selalu memenuhi sudut rumah.
+                </p>
+                <p class="text-warm-700 leading-relaxed">
+                    Meskipun kami belum memiliki toko fisik (offline store), konsep dapur rumah ini justru memungkinkan kami memberikan perhatian penuh pada kualitas setiap loyang kue yang keluar. Tanpa produksi massal, tanpa pengawet, murni menggunakan resep rahasia keluarga dengan bahan mentega mentah berkualitas tinggi.
+                </p>
+                <div class="grid grid-cols-2 gap-6 pt-4 border-t border-warm-200">
+                    <div>
+                        <h4 class="font-serif font-bold text-warm-900 text-lg mb-1">Bahan Pilihan</h4>
+                        <p class="text-sm text-warm-600">Mentega murni, cokelat Belgia asli, dan telur segar setiap hari.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-serif font-bold text-warm-900 text-lg mb-1">Freshly Baked</h4>
+                        <p class="text-sm text-warm-600">Tidak ada stok lama. Kue dipanggang langsung setelah pesanan dikonfirmasi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-to-order" class="py-20 bg-warm-800 text-warm-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-warm-300">Mudah & Cepat</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">Cara Memesan Produk</h2>
+                <p class="text-warm-300">Pesan langsung melalui website kami atau hubungi WhatsApp customer service kami untuk pemesanan khusus.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="bg-warm-900/50 p-8 rounded-2xl border border-warm-700/50 relative">
+                    <div class="absolute -top-4 -left-4 w-10 h-10 rounded-full bg-terracotta text-white font-serif font-bold flex items-center justify-center text-lg shadow">1</div>
+                    <div class="text-terracotta text-3xl mb-4"><i class="fa-solid fa-list-check"></i></div>
+                    <h3 class="font-serif font-bold text-xl text-white mb-2">Pilih Menu</h3>
+                    <p class="text-sm text-warm-300">Pilih kue atau pastry kesukaan Anda dari daftar menu kami dan masukkan ke keranjang.</p>
+                </div>
+
+                <div class="bg-warm-900/50 p-8 rounded-2xl border border-warm-700/50 relative">
+                    <div class="absolute -top-4 -left-4 w-10 h-10 rounded-full bg-terracotta text-white font-serif font-bold flex items-center justify-center text-lg shadow">2</div>
+                    <div class="text-terracotta text-3xl mb-4"><i class="fa-solid fa-cart-shopping"></i></div>
+                    <h3 class="font-serif font-bold text-xl text-white mb-2">Checkout & Isi Detail</h3>
+                    <p class="text-sm text-warm-300">Buka keranjang belanja, isi data nama, alamat pengiriman, dan catatan khusus pesanan.</p>
+                </div>
+
+                <div class="bg-warm-900/50 p-8 rounded-2xl border border-warm-700/50 relative">
+                    <div class="absolute -top-4 -left-4 w-10 h-10 rounded-full bg-terracotta text-white font-serif font-bold flex items-center justify-center text-lg shadow">3</div>
+                    <div class="text-terracotta text-3xl mb-4"><i class="fa-brands fa-whatsapp"></i></div>
+                    <h3 class="font-serif font-bold text-xl text-white mb-2">Kirim ke WhatsApp</h3>
+                    <p class="text-sm text-warm-300">Sistem otomatis akan menyusun format pesanan dan mengarahkannya langsung ke WhatsApp kami.</p>
+                </div>
+
+                <div class="bg-warm-900/50 p-8 rounded-2xl border border-warm-700/50 relative">
+                    <div class="absolute -top-4 -left-4 w-10 h-10 rounded-full bg-terracotta text-white font-serif font-bold flex items-center justify-center text-lg shadow">4</div>
+                    <div class="text-terracotta text-3xl mb-4"><i class="fa-solid fa-box-open"></i></div>
+                    <h3 class="font-serif font-bold text-xl text-white mb-2">Panggang & Kirim</h3>
+                    <p class="text-sm text-warm-300">Kue dipanggang sesuai jadwal, lalu dikirimkan langsung ke rumah Anda via kurir instant.</p>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <a href="#menu" class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-terracotta hover:bg-[#c26547] text-white font-semibold shadow-lg transition-all">
+                    Mulai Belanja Sekarang <i class="fa-solid fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div class="bg-white p-8 sm:p-10 rounded-3xl border border-warm-200 shadow-sm space-y-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-warm-100 text-warm-800 flex items-center justify-center text-lg">
+                        <i class="fa-solid fa-truck-fast"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-2xl text-warm-900">Informasi Pengiriman</h3>
+                </div>
+                <p class="text-warm-700">
+                    Karena kami berbasis di dapur rumah, pengiriman dilakukan khusus menggunakan kurir instan (GoSend / GrabExpress) guna menjaga kondisi kue tetap utuh, segar, dan tidak rusak di jalan.
+                </p>
+                <ul class="space-y-3 text-sm text-warm-700">
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-circle-check text-terracotta mt-1"></i>
+                        <span>Area pengiriman: Seluruh area kota dan sekitarnya (menyesuaikan titik dapur kami).</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-circle-check text-terracotta mt-1"></i>
+                        <span>Pemesanan H-1 untuk memastikan slot pemanggangan tersedia.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="contact" class="bg-white p-8 sm:p-10 rounded-3xl border border-warm-200 shadow-sm space-y-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-warm-100 text-warm-800 flex items-center justify-center text-lg">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-2xl text-warm-900">Hubungi Kami</h3>
+                </div>
+                <p class="text-warm-700">
+                    Ada pertanyaan seputar menu katering acara, hampers, atau pesanan khusus ulang tahun? Jangan ragu untuk menyapa kami!
+                </p>
+                <div class="space-y-4 pt-2">
+                    <div class="flex items-center gap-3 text-warm-800">
+                        <i class="fa-brands fa-whatsapp text-2xl text-green-600"></i>
+                        <span class="font-semibold">+62 812-3456-7890 (WhatsApp Only)</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-warm-800">
+                        <i class="fa-brands fa-instagram text-2xl text-pink-600"></i>
+                        <span class="font-semibold">@manisdanhangat.bakes</span>
+                    </div>
+                </div>
+                <a href="https://wa.me/6281234567890?text=Halo%20Manis%20dan%20Hangat,%20saya%20ingin%20bertanya%20mengenai%20menu%20kue..." target="_blank" class="w-full inline-flex items-center justify-center py-3 rounded-full bg-warm-100 hover:bg-warm-200 text-warm-800 font-semibold transition-all">
+                    <i class="fa-brands fa-whatsapp mr-2 text-green-600"></i> Chat WhatsApp Langsung
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div id="cart-modal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-[#FAF6F0] w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden border border-warm-200 flex flex-col max-h-[90vh]">
+            <div class="p-6 border-b border-warm-200 flex items-center justify-between bg-white">
+                <h3 class="font-serif font-bold text-2xl text-warm-900">Keranjang Belanja</h3>
+                <button onclick="toggleCartModal()" class="w-8 h-8 rounded-full bg-warm-100 hover:bg-warm-200 flex items-center justify-center text-warm-800">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            
+            <div id="cart-items-container" class="p-6 overflow-y-auto flex-1 space-y-4">
+                <!-- Cart items dynamically inserted here -->
+            </div>
+
+            <div class="p-6 bg-white border-t border-warm-200 space-y-4">
+                <div class="space-y-3">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-warm-700 mb-1">Nama Pemesan</label>
+                        <input type="text" id="buyer-name" placeholder="Masukkan nama lengkap Anda" class="w-full px-4 py-2.5 rounded-xl border border-warm-300 bg-warm-50 text-warm-900 focus:outline-none focus:border-terracotta text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-warm-700 mb-1">Catatan Pengiriman / Tanggal Kirim</label>
+                        <input type="text" id="buyer-note" placeholder="Contoh: Kirim besok jam 10 pagi, Alamat: Jl. Melati No. 5" class="w-full px-4 py-2.5 rounded-xl border border-warm-300 bg-warm-50 text-warm-900 focus:outline-none focus:border-terracotta text-sm">
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between pt-2 border-t border-warm-200">
+                    <span class="font-serif font-bold text-lg text-warm-900">Total Perkiraan:</span>
+                    <span id="cart-total-price" class="font-serif font-bold text-2xl text-terracotta">Rp 0</span>
+                </div>
+
+                <button onclick="checkoutWhatsApp()" class="w-full py-4 rounded-full bg-green-600 hover:bg-green-700 text-white font-semibold shadow-lg shadow-green-600/20 flex items-center justify-center gap-2 transition-all">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> Pesan via WhatsApp Sekarang
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-warm-900 text-warm-300 py-12 border-t border-warm-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div>
+                <a href="#" class="font-serif text-2xl font-bold text-white block mb-1">Manis & Hangat</a>
+                <p class="text-xs text-warm-400">Artisan Homemade Bakery • Dibuat dengan cinta dari dapur rumah.</p>
+            </div>
+            <p class="text-xs text-warm-400">© 2026 Manis & Hangat Bakery. Hak cipta dilindungi.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Data Menu Kue Homemade
+        const menuItems = [
+            {
+                id: 1,
+                name: "Classic Butter Croissant",
+                category: "pastry",
+                price: 22000,
+                rating: 4.9,
+                description: "Croissant renyah di luar, lembut berlapis mentega pilihan di dalam.",
+                image: "https://placehold.co/600x400/ebdcd0/4a3526?text=Butter+Croissant"
+            },
+            {
+                id: 2,
+                name: "Almond Pain au Chocolat",
+                category: "pastry",
+                price: 28000,
+                rating: 4.8,
+                description: "Pastry gulung isi cokelat leleh belgian dengan taburan krim almond panggang.",
+                image: "https://placehold.co/600x400/d9c0ad/4a3526?text=Almond+Chocolat"
+            },
+            {
+                id: 3,
+                name: "Signature Fudgy Brownies",
+                category: "cookies",
+                price: 85000,
+                rating: 5.0,
+                description: "Brownies panggang dengan tekstur fudgy pekat dan shiny crust di atasnya (Loyang 20x10).",
+                image: "https://placehold.co/600x400/c29d82/4a3526?text=Fudgy+Brownies"
+            },
+            {
+                id: 4,
+                name: "Classic Chiffon Cake Pandan",
+                category: "cake",
+                price: 110000,
+                rating: 4.9,
+                description: "Kue chiffon lembut beraroma daun pandan asli tanpa perisa buatan.",
+                image: "https://placehold.co/600x400/ebdcd0/5c412e?text=Pandan+Chiffon"
+            },
+            {
+                id: 5,
+                name: "Dark Chocolate Chunk Cookies",
+                category: "cookies",
+                price: 45000,
+                rating: 4.8,
+                description: "Toples isi 6 pcs cookies lembut legit dengan lelehan dark chocolate chunks (150gr).",
+                image: "https://placehold.co/600x400/d9c0ad/5c412e?text=Choco+Cookies"
+            },
+            {
+                id: 6,
+                name: "Whole Milk Berry Tartlet",
+                category: "cake",
+                price: 135000,
+                rating: 4.9,
+                description: "Tart renyah dengan krim vanila custard lembut dan topping buah beri segar.",
+                image: "https://placehold.co/600x400/c29d82/5c412e?text=Berry+Tartlet"
+            }
+        ];
+
+        let cart = [];
+
+        // Format currency helper
+        function formatRupiah(number) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(number);
+        }
+
+        // Render Menu Cards
+        function renderMenu(filter = 'all') {
+            const grid = document.getElementById('menu-grid');
+            grid.innerHTML = '';
+
+            const filtered = filter === 'all' ? menuItems : menuItems.filter(item => item.category === filter);
+
+            filtered.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-2xl overflow-hidden border border-warm-200 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group';
+                card.innerHTML = `
+                    <div class="relative overflow-hidden aspect-[16/10]">
+                        <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/ebdcd0/4a3526?text=Homemade+Bake'">
+                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-full text-xs font-bold text-warm-800 shadow-sm flex items-center gap-1">
+                            <i class="fa-solid fa-star text-amber-500"></i> ${item.rating}
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <h3 class="font-serif font-bold text-xl text-warm-900 mb-1">${item.name}</h3>
+                            <p class="text-sm text-warm-600 line-clamp-2">${item.description}</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-warm-100">
+                            <div>
+                                <span class="text-xs text-warm-500 block">Harga</span>
+                                <span class="font-serif font-bold text-lg text-terracotta">${formatRupiah(item.price)}</span>
+                            </div>
+                            <button onclick="addToCart(${item.id})" class="px-4 py-2.5 rounded-xl bg-warm-100 hover:bg-warm-800 hover:text-white text-warm-800 text-sm font-semibold transition-all flex items-center gap-2">
+                                <i class="fa-solid fa-plus"></i> Tambah
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Filter Menu by category
+        function filterMenu(category) {
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.className = "category-btn px-5 py-2 rounded-full text-sm font-semibold bg-white text-warm-800 hover:bg-warm-200 transition-all shadow-sm";
+            });
+            event.target.className = "category-btn px-5 py-2 rounded-full text-sm font-semibold bg-warm-800 text-white transition-all shadow-sm";
+            renderMenu(category);
+        }
+
+        // Add to cart
+        function addToCart(id) {
+            const item = menuItems.find(i => i.id === id);
+            const existing = cart.find(i => i.id === id);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ ...item, qty: 1 });
+            }
+            updateCartUI();
+            
+            // Notification or visual cue could be added here
+        }
+
+        // Update Cart UI Badge and Items
+        function updateCartUI() {
+            const badge = document.getElementById('cart-badge');
+            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+            
+            if (totalQty > 0) {
+                badge.innerText = totalQty;
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+
+            const container = document.getElementById('cart-items-container');
+            container.innerHTML = '';
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-warm-500">
+                        <i class="fa-solid fa-basket-shopping text-4xl mb-3 text-warm-300"></i>
+                        <p class="font-medium">Keranjang belanja Anda masih kosong.</p>
+                        <p class="text-xs text-warm-400 mt-1">Pilih menu favorit Anda di atas.</p>
+                    </div>
+                `;
+            } else {
+                cart.forEach((item, index) => {
+                    const div = document.createElement('div');
+                    div.className = "flex items-center justify-between gap-4 p-4 rounded-2xl bg-warm-50 border border-warm-200";
+                    div.innerHTML = `
+                        <div class="flex-1">
+                            <h4 class="font-serif font-bold text-warm-900">${item.name}</h4>
+                            <p class="text-xs text-warm-600">${formatRupiah(item.price)} x ${item.qty}</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="changeQty(${index}, -1)" class="w-7 h-7 rounded-lg bg-warm-200 text-warm-800 flex items-center justify-center font-bold hover:bg-warm-300">-</button>
+                            <span class="font-semibold text-sm w-6 text-center">${item.qty}</span>
+                            <button onclick="changeQty(${index}, 1)" class="w-7 h-7 rounded-lg bg-warm-200 text-warm-800 flex items-center justify-center font-bold hover:bg-warm-300">+</button>
+                        </div>
+                    `;
+                    container.appendChild(div);
+                });
+            }
+
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            document.getElementById('cart-total-price').innerText = formatRupiah(totalPrice);
+        }
+
+        // Change quantity in cart
+        function changeQty(index, change) {
+            cart[index].qty += change;
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCartUI();
+        }
+
+        // Toggle Cart Modal
+        function toggleCartModal() {
+            const modal = document.getElementById('cart-modal');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            } else {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+            }
+        }
+
+        // Toggle Mobile Navigation Menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Checkout via WhatsApp
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                alert('Keranjang Anda masih kosong. Silakan pilih menu terlebih dahulu!');
+                return;
+            }
+
+            const name = document.getElementById('buyer-name').value.trim();
+            const note = document.getElementById('buyer-note').value.trim();
+
+            if (!name) {
+                alert('Mohon masukkan nama pemesan terlebih dahulu.');
+                return;
+            }
+
+            let message = `Halo Admin Manis & Hangat, saya ingin memesan kue:\n\n`;
+            message += `*Nama Pemesan:* ${name}\n`;
+            if (note) {
+                message += `*Catatan/Jadwal:* ${note}\n`;
+            }
+            message += `\n*Daftar Pesanan:*\n`;
+
+            cart.forEach((item, idx) => {
+                message += `${idx + 1}. ${item.name} (${item.qty}x) - ${formatRupiah(item.price * item.qty)}\n`;
+            });
+
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            message += `\n*Total Keseluruhan:* ${formatRupiah(totalPrice)}\n\nMohon konfirmasi ketersediaan slot dan ongkir pengirimannya. Terima kasih!`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/6281234567890?text=${encodedMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Initialize on load
+        window.onload = function() {
+            renderMenu('all');
+            updateCartUI();
+        }
+    </script>
+</body>
+</html>
